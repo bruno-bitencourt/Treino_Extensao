@@ -12,7 +12,10 @@
 
 # Tarefa 1: Leitura do banco de dados banco 1 = SIM.csv com o nome de dados_bd1
 # Ler o arquivo, verificar estrutura dos dados e dar uma olhada nos dados
-
+dados_bd1<-read.csv("banco 1 SIM.csv")
+str(dados_bd1)
+head(dados_bd1)
+summary(dados_bd1)
 # Ao terminar a Tarefa 1 commit com a mensagem " script - tarefa 1" e envie para o repositório Treino_Extensao
 
 
