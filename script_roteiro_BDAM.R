@@ -12,7 +12,7 @@
 # Ler os arquivos, verificar estruturas dos dados e dar uma olhada nos dados
 
 dados_bd4 <- read.csv2("banco 4 ATLAS.csv", fileEncoding = "latin1")
-codigos_ibge <- read.csv("códigos dos municípios - 2010.csv", fileEncoding = "UTF-8")
+codigos_ibge <- read.csv2("códigos dos municípios - 2010.csv", fileEncoding = "UTF-8")
 str(dados_bd4)
 head(dados_bd4)
 str(codigos_ibge)
@@ -22,6 +22,9 @@ head(codigos_ibge)
 
 # Tarefa 2: Manipulação dos dados# Criar uma nova variável em dados_bd4 MUNICIPIOS atribuindo os códigos
 #dos municípios, de forma a ficar# coerente com os nomes dos municipios e códigos IBGE
+
+dados_bd4[, "nome_limpo"] <- gsub(" (RJ)", "", dados_bd4[, "MUNICIPIO"], fixed = TRUE)
+dados_bd4[, "MUNICIPIOS"] <- codigos_ibge[match(dados_bd4[, "nome_limpo"], codigos_ibge[, "município"]), "CODMUNRES"]
 
 # Ao terminar a Tarefa 2 commit com a mensagem " script - tarefa 1 a 2" e envie para o repositório
 #Treino_Extensao
@@ -41,4 +44,3 @@ head(codigos_ibge)
 
 # Ao terminar a Tarefa 4 commit com a mensagem "dados e script - Etapa 4" e envie para o repositório
 #Treino_Extensao
-git push -u origin banco-4
