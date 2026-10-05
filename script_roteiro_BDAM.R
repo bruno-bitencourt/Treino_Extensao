@@ -37,6 +37,11 @@ dados_bd4[, "MUNICIPIOS"] <- codigos_ibge[match(dados_bd4[, "nome_limpo"], codig
 # QR_CA: qualidade da rodovia em 2020
 # QRU: qualidade das rodovias urbanas
 # QRR: qualidade das rodovias rurais
+banco_mun <- data.frame(ANO = 2025, NIVEL = "MUNICIPIO", CODIGO = dados_bd4[, "MUNICIPIOS"], QR_CA = as.numeric(dados_bd4[, "QUALIDADE_RODOVIAS_2020"]), QRU = as.numeric(dados_bd4[, "QUALIDADE_URBANA_2025"]), QRR = as.numeric(dados_bd4[, "QUALIDADE_RURAL_2025"]))
+banco_mun <- banco_mun[!is.na(banco_mun[, "CODIGO"]), ]
+linha_uf <- data.frame(ANO = 2025, NIVEL = "UF", CODIGO = "33", QR_CA = mean(banco_mun[, "QR_CA"], na.rm = TRUE), QRU = mean(banco_mun[, "QRU"], na.rm = TRUE), QRR = mean(banco_mun[, "QRR"], na.rm = TRUE))
+BANCO4_RJ <- rbind(linha_uf, banco_mun)
+
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório
 #Treino_Extensao
 
