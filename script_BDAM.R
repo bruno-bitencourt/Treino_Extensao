@@ -215,6 +215,24 @@ dados_bd5$NUM_MOTOS_REGISTRADAS <- as.numeric(gsub("\\.", "", dados_bd5$NUM_MOTO
 # NCR: número de carros registrados
 # NMR: número de motos registradas
 
+banco5_municipios <- data.frame(
+  ANO = 2025,
+  NIVEL = "MUNICIPIO",
+  CODIGO = dados_bd5$MUNICIPIO,
+  NCR = dados_bd5$NUM_CARROS_REGISTRADOS,
+  NMR = dados_bd5$NUM_MOTOS_REGISTRADAS
+)
+
+banco5_uf <- data.frame(
+  ANO = 2025,
+  NIVEL = "UF",
+  CODIGO = 33,
+  NCR = sum(dados_bd5$NUM_CARROS_REGISTRADOS, na.rm = TRUE),
+  NMR = sum(dados_bd5$NUM_MOTOS_REGISTRADAS, na.rm = TRUE)
+)
+
+BANCO5_RJ <- rbind(banco5_uf, banco5_municipios)
+
 # Ao terminar a Tarefa 3 commit com a mensagem " script - tarefa 1 a 3" e envie para o repositório Treino_Extensao
 
 
